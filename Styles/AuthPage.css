@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
-   font-family: "Lato", sans-serif;
+   font-family: "Nunito", sans-serif;
 }
 
 body {
@@ -64,6 +64,29 @@ body {
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;
+}
+
+.input-box .toggle-password {
+    position: absolute;
+    right: 40px; /* Position the Show Password icon on the right */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.input-box .toggle-password:hover {
+    color: #fff;
+}
+
+.input-box i.bxs-lock-alt {
+    position: absolute;
+    right: 10px; /* Keep the lock icon slightly left of the Show Password icon */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .wrapper .remember-fogot {

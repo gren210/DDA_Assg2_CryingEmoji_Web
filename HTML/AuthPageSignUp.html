@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <title>AppNameDatabase</title>
+    <link rel="stylesheet" href="../Styles/AuthPage.css">
+</head>
+
+<body>
+
+    <div class="wrapper">
+        <form id="signup-form">
+            <h1>Sign Up</h1>
+
+            <div class="input-box">
+                <input type="email" id="email" class="input" placeholder="Email" required>
+                <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="text" id="username" class="input" placeholder="Username" required>
+                <i class='bx bxs-user-circle'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="password" class="input" placeholder="Password" required>
+                <i class="bx bx-show toggle-password"></i>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" id="confirm-password" class="input" placeholder="Confirm Password" required>
+                <i class="bx bx-show toggle-password"></i>
+                <i class='bx bxs-lock-alt'></i>
+            </div>
+
+            <button type="submit" class="btn">Sign Up</button>
+
+            <div class="register-link">
+                <p>Already Have An account?</p><a href="AuthPageLogin.html">Log In</a>
+            </div>
+        </form>
+    </div>
+
+    <script type="module" src="../JS/AuthPage.js"></script>
+</body>
+
+</html>
+
