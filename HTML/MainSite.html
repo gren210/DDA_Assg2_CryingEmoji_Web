@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content=""width=device-width, initial-scale="1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>AppNameDatabase</title>
     <link rel="stylesheet" href="../Styles/MainSite.css">
-
 </head>
 
 <body>
-
     <header class="header">
         <nav class="navbar">
             <div class="logo">AppName</div>
@@ -25,7 +24,68 @@
         </nav>
     </header>
 
-    <script type="module" src="../JS/MainPage.js"></script>
+    <!-- Main Content Container -->
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Super Cashier</h1>
+                <p>Your ultimate adventure starts here!</p>
+            </div>
+            
+        </section>
+        
 
+        <!-- Top Trainee Section -->
+        <section class="top-trainee">
+            <h2>Top Trainees</h2>
+            <div class="trainee-box">
+                <p>Top Player: John Doe</p>
+                <p>Score: 1000</p>
+            </div>
+            <div class="trainee-box">
+                <p>Top Player: John Doe</p>
+                <p>Score: 1000</p>
+            </div>
+            <div class="trainee-box">
+                <p>Top Player: John Doe</p>
+                <p>Score: 1000</p>
+            </div>
+
+            <button type="leaderboard" class="btn"><a href="MainSiteLeaderboard.html">See Leaderboards</a></button>
+        </section>
+
+        <!-- Your Recent Game -->
+        <section class="recent-game">
+            <h2>Your Recent Game</h2>
+            <div class="recent-box">
+                <p>Correct Packages:</p>
+                <p>Rat Kills:</p>
+                <p>Total Time:</p>
+            </div>
+         </section>
+
+        <!-- Tips and tricks -->
+         <section class="t-and-t">
+            <h2>Tips and Tricks!</h2>
+            <div class="tips-box">
+                <p>How to _______</p>
+                <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+            </div>
+            <div class="tips-box">
+                <p>How to _______</p>
+                <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+            </div>
+            <div class="tips-box">
+                <p>How to _______</p>
+                <p>Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah Blah</p>
+            </div>
+            <button type="tipsandtricks" class="btn"><a href="MainSiteTips&Tricks.html">See More Tips!</a></button>
+         </section>
+
+        </main>
+
+    <script type="module" src="../JS/MainPage.js"></script>
 </body>
+
 </html>

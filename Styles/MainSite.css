@@ -7,25 +7,30 @@
    font-family: "Nunito", sans-serif;
 }
 
+/* General Styles */
 body {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
     background: url("../Images/AuthBackground.png");
     background-size: cover;
     background-position: center;
+    font-family: "Nunito", sans-serif;
+    min-height: 100vh;
+    color: white;
 }
 
+/* Header Styles */
 .header {
     width: 100%;
-    background: rgba(255, 255, 255, 0.1); 
-    backdrop-filter: blur(10px); 
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    z-index: 1000; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
 }
 
 .navbar {
@@ -50,15 +55,10 @@ body {
     list-style: none;
 }
 
-.navbar .menu li {
-    position: relative;
-}
-
 .navbar .menu li a {
     text-decoration: none;
     color: white;
     font-size: 16px;
-    font-weight: 500;
     padding: 8px 12px;
     transition: all 0.3s ease;
     border-radius: 5px;
@@ -66,16 +66,173 @@ body {
 
 .navbar .menu li a:hover {
     background: rgba(255, 255, 255, 0.2);
-    color: #fff;
+}
+
+/* Main Content Layout */
+.main-content {
+    display: flex;
+    margin-top: 80px; /* Space below the fixed header */
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Hero Section */
+.hero {
+    flex: 0 0 300px; /* Fix the width at 300px */
+    height: 800px;
+    background: url("../Images/hero_image_MS.jpg") no-repeat center center;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.hero-content p {
+    font-size: 18px;
+}
+
+/* Top Trainee Section */
+.top-trainee {
+    margin-left: -10px; 
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    width: 100%; /* Increase or set a specific width */
+}
+
+.top-trainee h2 {
+    font-size: 54px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+
+.trainee-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.trainee-box p {
+    font-size: 24px;
+    margin: 5px 0;
+}
+.top-trainee .btn {
+    width: 250px;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin: 20px;
+}
+
+/*Tips and Tricks Section*/
+.t-and-t {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.t-and-t h2 {
+    font-size: 54px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+.tips-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    height: 350px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 10px;
+    backdrop-filter: blur(10px);
+}
+.tips-box p{
+    font-size: 24px;
+    margin: 5px 0;
+}
+.t-and-t .btn {
+    width: 300px;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 25px;
+    color: #333;
     font-weight: 600;
 }
 
-.content {
-    text-align: center;
-    margin-top: 50px;
+/*Recent Game Section*/
+.recent-game {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+.recent-game h2 {
+    font-size: 54px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    white-space: nowrap;
+}
+.recent-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left; /* Align text to the left */
+    display: flex; /* Enable Flexbox for vertical alignment */
+    flex-direction: column; /* Arrange items in a column */
+    justify-content: space-evenly; /* Distribute items evenly within the box */
+    margin: 10px;
+    backdrop-filter: blur(10px);
 }
 
-.content h1 {
-    font-size: 48px;
-    color: white;
+.recent-box p {
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0; /* Remove extra margins */
 }
+
