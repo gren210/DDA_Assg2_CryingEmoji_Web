@@ -4,15 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content=""width=device-width, initial-scale="1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>AppNameDatabase</title>
+    <title>Profile Page</title>
     <link rel="stylesheet" href="../Styles/MainSite.css">
-
 </head>
 
 <body>
-
     <header class="header">
         <nav class="navbar">
             <div class="logo">AppName</div>
@@ -25,7 +23,116 @@
         </nav>
     </header>
 
-    <script type="module" src="../JS/MainPage.js"></script>
+    <div class="container-profile">
+        <div class="profile-header">
+            <div class="profile-picture">
+                <img src="../Images/default-picture.png" alt="Profile Picture">
+            </div>
+            <div class="profile-info">
+                <h1>Username</h1>
+                <p>Email: user@example.com</p>
+            </div>
+        </div>
 
+        <div class="profile-stats">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stat</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Average Time per Package</td>
+                        <td>3:45</td>
+                    </tr>
+                    <tr>
+                        <td>Average Total Time</td>
+                        <td>12:30</td>
+                    </tr>
+                    <tr>
+                        <td>Correct Packages</td>
+                        <td>95</td>
+                    </tr>
+                    <tr>
+                        <td>Failures</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Kills</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Missed Items</td>
+                        <td>2</td>
+                    </tr>
+                    <tr>
+                        <td>Score</td>
+                        <td>4200</td>
+                    </tr>
+                    <tr>
+                        <td>Total Packages</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Total Time</td>
+                        <td>15:30</td>
+                    </tr>
+                    <tr>
+                        <td>Wrong Packages</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>Wrong Quantity</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>Wrongly Scanned Items</td>
+                        <td>4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>
+                    Our Goal is to prepare those looking to work in a warehouse environment through this VR training simulator.
+                </p>
+            </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-link">
+                        <i class="bx bxl-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="bx bxl-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2024 Super Packer. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script type="module" src="../JS/MainSite.js"></script>
 </body>
+
 </html>
+

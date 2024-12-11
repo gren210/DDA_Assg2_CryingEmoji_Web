@@ -40,25 +40,12 @@
                         <th>Kills</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Player1</td>
-                        <td>12.5s</td>
-                        <td>1500</td>
-                        <td>25</td>
-                        <td>10</td>
-                    </tr>
-                    <tr>
-                        <td>Player2</td>
-                        <td>15.3s</td>
-                        <td>1400</td>
-                        <td>20</td>
-                        <td>12</td>
-                    </tr>
+                <tbody id="leaderboard1-body">
+                    <!-- Rows will be dynamically populated -->
                 </tbody>
             </table>
         </section>
-
+    
         <!-- Leaderboard 2 -->
         <section class="leaderboard">
             <h1>Leaderboard 2</h1>
@@ -73,26 +60,14 @@
                         <th>Kills</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>Player3</td>
-                        <td>8.2s</td>
-                        <td>1800</td>
-                        <td>30</td>
-                        <td>15</td>
-                    </tr>
-                    <tr>
-                        <td>Player4</td>
-                        <td>9.7s</td>
-                        <td>1750</td>
-                        <td>28</td>
-                        <td>14</td>
-                    </tr>
+                <tbody id="leaderboard2-body">
+                    <!-- Rows will be dynamically populated -->
                 </tbody>
             </table>
         </section>
     </div>
 
+    <!--Footer Section-->
     <footer class="footer">
         <div class="footer-container">
           <div class="footer-section about">
@@ -112,8 +87,14 @@
           <div class="footer-section social">
             <h3>Follow Us</h3>
             <div class="social-icons">
-              <a href="#"><img src="twitter-icon.png" alt="Twitter" /></a>
-              <a href="#"><img src="instagram-icon.png" alt="Instagram" /></a>
+              <a href="#" class="social-link">
+                <i class="bx bxl-twitter"></i>
+                <span>Twitter</span>
+              </a>
+              <a href="#" class="social-link">
+                <i class="bx bxl-instagram"></i>
+                <span>Instagram</span>
+              </a>
             </div>
           </div>
         </div>
@@ -123,6 +104,6 @@
       </footer>
 
     <!-- Script -->
-    <script type="module" src="../JS/MainPage.js"></script>
+    <script defer type="module" src="../JS/MainSite.js"></script>
 </body>
 </html>

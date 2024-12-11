@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content=""width=device-width, initial-scale="1.0">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>AppNameDatabase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <title>Tips and Tricks</title>
     <link rel="stylesheet" href="../Styles/MainSite.css">
-
 </head>
-
 <body>
-
     <header class="header">
         <nav class="navbar">
             <div class="logo">AppName</div>
@@ -25,39 +21,66 @@
         </nav>
     </header>
 
+    <main class="main-content">
+        <!-- Tips Section -->
+        <section class="tips-section">
+            <h2>Tips and Tricks</h2>
+            <div class="tips-container">
+                <div class="tips-box">
+                    <h3>Tip #1</h3>
+                    <p>Always double-check your inventory before starting your shift to ensure you have the correct tools.</p>
+                </div>
+                <div class="tips-box">
+                    <h3>Tip #2</h3>
+                    <p>Use the scanner correctly to avoid any mistakes during item picking or packaging.</p>
+                </div>
+                <div class="tips-box">
+                    <h3>Tip #3</h3>
+                    <p>Organize your workspace to improve efficiency and avoid injuries.</p>
+                </div>
+            </div>
+        </section>
 
-
+        <!-- Question Submission Form -->
+        <section class="question-section">
+            <h2>Have a Question?</h2>
+            <div class="question-form">
+                <label for="user-question">Submit your question below:</label>
+                <textarea id="user-question" placeholder="Type your question here..."></textarea>
+                <button id="submit-question">Submit Question</button>
+                <div class="success-message" id="success-message"></div>
+            </div>
+        </section>
+    </main>
 
     <footer class="footer">
         <div class="footer-container">
-          <div class="footer-section about">
-            <h3>About Us</h3>
-            <p>
-              Our Goal is to prepare those looking to work in a warehouse enviroment through this our VR training simulator.
-            </p>
-          </div>
-          <div class="footer-section links">
-            <h3>Quick Links</h3>
-            <ul>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">Privacy Policy</a></li>
-              <li><a href="#">Contact Us</a></li>
-            </ul>
-          </div>
-          <div class="footer-section social">
-            <h3>Follow Us</h3>
-            <div class="social-icons">
-              <a href="#"><img src="twitter-icon.png" alt="Twitter" /></a>
-              <a href="#"><img src="instagram-icon.png" alt="Instagram" /></a>
+            <div class="footer-section about">
+                <h3>About Us</h3>
+                <p>Our goal is to prepare those looking to work in a warehouse environment through our VR training simulator.</p>
             </div>
-          </div>
+            <div class="footer-section links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#" class="social-link"><i class="bx bxl-twitter"></i> Twitter</a>
+                    <a href="#" class="social-link"><i class="bx bxl-instagram"></i> Instagram</a>
+                </div>
+            </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2024 Super Packer. All Rights Reserved.</p>
+            <p>© 2024 Super Packer. All Rights Reserved.</p>
         </div>
-      </footer>
+    </footer>
 
-    <script type="module" src="../JS/MainPage.js"></script>
-
+    <script src="../JS/MainSite.js"></script>
 </body>
 </html>
+
