@@ -4,28 +4,125 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content=""width=device-width, initial-scale="1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <title>AppNameDatabase</title>
+    <title>AppName Database - Leaderboard</title>
     <link rel="stylesheet" href="../Styles/MainSite.css">
-
 </head>
 
 <body>
-
+    <!-- Header -->
     <header class="header">
         <nav class="navbar">
             <div class="logo">AppName</div>
             <ul class="menu">
                 <li><a href="MainSite.html">Home</a></li>
                 <li><a href="MainSiteTips&Tricks.html">Tips and Tricks</a></li>
-                <li><a href="MainSiteLeaderboard.html">Leaderboard</a></li>
+                <li><a href="MainSiteLeaderboard.html" class="active">Leaderboard</a></li>
                 <li><a href="MainSiteProfile.html">Profile</a></li>
             </ul>
         </nav>
     </header>
 
-    <script type="module" src="../JS/MainPage.js"></script>
+    <!-- Main Content -->
+    <div class="container-leaderboard">
+        <!-- Leaderboard 1 -->
+        <section class="leaderboard">
+            <h1>Leaderboard 1</h1>
+            <h3>Best Average Time to Pack 1 Correct Package</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Best Average Time</th>
+                        <th>Score</th>
+                        <th>Correct Packages</th>
+                        <th>Kills</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Player1</td>
+                        <td>12.5s</td>
+                        <td>1500</td>
+                        <td>25</td>
+                        <td>10</td>
+                    </tr>
+                    <tr>
+                        <td>Player2</td>
+                        <td>15.3s</td>
+                        <td>1400</td>
+                        <td>20</td>
+                        <td>12</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
+        <!-- Leaderboard 2 -->
+        <section class="leaderboard">
+            <h1>Leaderboard 2</h1>
+            <h3>Fastest Time to Complete 1 Correct Package</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Fastest Time</th>
+                        <th>Score</th>
+                        <th>Correct Packages</th>
+                        <th>Kills</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Player3</td>
+                        <td>8.2s</td>
+                        <td>1800</td>
+                        <td>30</td>
+                        <td>15</td>
+                    </tr>
+                    <tr>
+                        <td>Player4</td>
+                        <td>9.7s</td>
+                        <td>1750</td>
+                        <td>28</td>
+                        <td>14</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="footer-container">
+          <div class="footer-section about">
+            <h3>About Us</h3>
+            <p>
+              Our Goal is to prepare those looking to work in a warehouse enviroment through this our VR training simulator.
+            </p>
+          </div>
+          <div class="footer-section links">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="#">Home</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+              <li><a href="#">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-section social">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+              <a href="#"><img src="twitter-icon.png" alt="Twitter" /></a>
+              <a href="#"><img src="instagram-icon.png" alt="Instagram" /></a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2024 Super Packer. All Rights Reserved.</p>
+        </div>
+      </footer>
+
+    <!-- Script -->
+    <script type="module" src="../JS/MainPage.js"></script>
 </body>
 </html>
