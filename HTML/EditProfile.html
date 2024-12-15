@@ -29,19 +29,23 @@
             <form id="editProfileForm">
                 <!-- Change Username -->
                 <div class="form-group">
-                    <label for="username">Change Username:</label>
-                    <input type="text" id="username" name="username" placeholder="Enter new username" required>
+                    <label for="edit-username">Change Username:</label>
+                    <input type="text" id="edit-username" name="username" placeholder="Enter new username" required>
                 </div>
 
                 <!-- Set User Description -->
                 <div class="form-group">
-                    <label for="description">Set User Description:</label>
-                    <textarea id="description" name="description" placeholder="Write about yourself..." rows="4"></textarea>
+                    <label for="edit-player-desc">Set User Description:</label>
+                    <textarea id="edit-player-desc" name="description" placeholder="Write about yourself..." rows="4" required></textarea>
                 </div>
+
+                <!-- Success and Error Messages -->
+                <div id="success-message" style="display: none; color: #28a745; margin-bottom: 10px;"></div>
+                <div id="error-message" style="display: none; color: red; margin-bottom: 10px;"></div>
 
                 <!-- Save Button -->
                 <div class="form-group">
-                    <button type="submit" class="save-button">Save Changes</button>
+                    <button type="button" id="save-profile" class="save-button">Save Changes</button>
                 </div>
             </form>
         </div>
@@ -86,3 +90,4 @@
 </body>
 
 </html>
+

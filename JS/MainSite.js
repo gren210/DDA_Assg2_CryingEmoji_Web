@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     fetchLeaderboard();
-    fetchUserProfile();
+    fetchLeaderboardHome();
 });
 
 // Function to populate a leaderboard
@@ -48,43 +48,112 @@ function populateLeaderboard(data, tableBodyId) {
     }
 }
 
-// Handle question submission
-const submitButton = document.getElementById("submit-question");
-if (submitButton) {
-    submitButton.addEventListener("click", () => {
-        const userQuestion = document.getElementById("user-question").value.trim();
-        const successMessage = document.getElementById("success-message");
-
-        if (userQuestion !== "") {
-            successMessage.textContent = "Thank you! Your question has been submitted.";
-            successMessage.style.color = "#28a745"; // Green for success
-            successMessage.style.display = "block";
-
-            setTimeout(() => {
-                successMessage.style.display = "none";
-            }, 3000);
-
-            // Clear the textarea
-            document.getElementById("user-question").value = "";
-        } else {
-            successMessage.textContent = "Please enter a question before submitting.";
-            successMessage.style.color = "red"; // Red for error
-            successMessage.style.display = "block";
-
-            setTimeout(() => {
-                successMessage.style.display = "none";
-            }, 3000);
-        }
-    });
-}
 
 // Firebase
 import { auth} from "../config.js";
-import { getDatabase, ref, child, get} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
+import { getDatabase, ref, child, get, push, set, update} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
 import {setPersistence, browserLocalPersistence, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js'
 // Initialize Firebase database
 const db = getDatabase();
 const dbRef = ref(db);
+
+
+
+
+// Handle profile update
+function updateProfile() {
+    const usernameInput = document.getElementById("edit-username").value.trim();
+    const playerDescInput = document.getElementById("edit-player-desc").value.trim();
+    const successMessage = document.getElementById("success-message");
+    const errorMessage = document.getElementById("error-message");
+
+    // Validate input fields
+    if (!usernameInput || !playerDescInput) {
+        displayMessage(errorMessage, "Both fields are required.", 3000);
+        return;
+    }
+
+    // Ensure current user is authenticated
+    const currentUser = auth.currentUser;
+    if (!currentUser) {
+        displayMessage(errorMessage, "No authenticated user.", 3000);
+        return;
+    }
+
+    // Check for duplicate usernames in the database
+    get(child(dbRef, "users"))
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                const users = snapshot.val();
+                let isDuplicate = false;
+
+                // Check if the username already exists in the database
+                for (const userID in users) {
+                    if (
+                        users[userID].profile.name.toLowerCase() === usernameInput.toLowerCase() &&
+                        userID !== currentUser.uid
+                    ) {
+                        isDuplicate = true;
+                        break;
+                    }
+                }
+
+                if (isDuplicate) {
+                    displayMessage(errorMessage, "This username is already taken.", 3000);
+                } else {
+                    // Update the user's profile in the "users" node
+                    const userRef = ref(db, `users/${currentUser.uid}/profile`);
+                    set(userRef, {
+                        name: usernameInput,
+                        playerDesc: playerDescInput,
+                        email: currentUser.email, // Retain the existing email
+                    })
+                        .then(() => {
+                            // Update the name in the leaderboard node
+                            const leaderboardRef = ref(db, `leaderboard/${currentUser.uid}`);
+                            update(leaderboardRef, { name: usernameInput })
+                                .then(() => {
+                                    displayMessage(successMessage, "Profile and leaderboard updated successfully!", 3000, true);
+                                })
+                                .catch((error) => {
+                                    console.error("Error updating leaderboard:", error);
+                                    displayMessage(errorMessage, "Profile updated, but failed to update leaderboard.", 3000);
+                                });
+                        })
+                        .catch((error) => {
+                            console.error("Error updating profile:", error);
+                            displayMessage(errorMessage, "An error occurred. Please try again.", 3000);
+                        });
+                }
+            } else {
+                console.error("No users found in the database.");
+                displayMessage(errorMessage, "An error occurred. Please try again.", 3000);
+            }
+        })
+        .catch((error) => {
+            console.error("Error checking duplicate usernames:", error);
+            displayMessage(errorMessage, "An error occurred. Please try again.", 3000);
+        });
+}
+
+// Utility function to display messages
+function displayMessage(element, message, timeout, reload = false) {
+    element.textContent = message;
+    element.style.display = "block";
+    setTimeout(() => {
+        element.style.display = "none";
+        if (reload) {
+            window.location.reload(); // Reload the page if specified
+        }
+    }, timeout);
+}
+
+
+// Attach event listener to the save button
+const saveButton = document.getElementById("save-profile");
+if (saveButton) {
+    saveButton.addEventListener("click", updateProfile);
+}
 
 
 
@@ -97,6 +166,12 @@ function monitorAuthState() {
                 if (user) {
                     console.log('Authenticated user:', user);
                     fetchUserProfile({ userID: user.uid }); // Fetch user profile
+                    if (document.querySelector(".top-trainee")) {
+                        fetchLeaderboardHome(); // Fetch leaderboard data only if on the leaderboard page
+                    }
+                    if (document.querySelector(".recent-game")) {
+                        fetchRecentGame(); // Fetch recent game data only if on the recent game page
+                    }
                 } else {
                     console.log('No authenticated user.');
                     window.location.href = "AuthPageLogin.html"; // Redirect to login if not authenticated
@@ -106,6 +181,70 @@ function monitorAuthState() {
         .catch((error) => {
             console.error("Error setting persistence:", error);
         });
+}
+
+async function fetchLeaderboardHome() {
+    try {
+        const snapshot = await get(child(dbRef, "leaderboard"));
+        if (snapshot.exists()) {
+            const leaderboardData = snapshot.val();
+            const topPlayers = Object.values(leaderboardData)
+                .sort((a, b) => b.score - a.score) // Sort by score descending
+                .slice(0, 3); // Get top 3 players
+
+            const leaderboardContainer = document.querySelector(".top-trainee");
+            if (leaderboardContainer) { // Check if the container exists
+                leaderboardContainer.innerHTML = `
+                    <h2>Top Trainees</h2>
+                    ${topPlayers
+                        .map(player => `
+                            <div class="trainee-box">
+                                <p>Top Player: ${player.name}</p>
+                                <p>Score: ${player.score}</p>
+                            </div>
+                        `)
+                        .join("")}
+                    <button class="btn">
+                        <a href="MainSiteLeaderboard.html">See Leaderboards</a>
+                    </button>
+                `;
+            }
+        } else {
+            console.log("No leaderboard data found.");
+        }
+    } catch (error) {
+        console.error("Error fetching leaderboard data:", error);
+    }
+}
+
+async function fetchRecentGame() {
+    try {
+        const user = auth.currentUser;
+        if (!user) {
+            console.error("No authenticated user.");
+            return;
+        }
+
+        const snapshot = await get(child(dbRef, `users/${user.uid}/stats/recentStats`));
+        if (snapshot.exists()) {
+            const recentStats = snapshot.val();
+            const recentGameContainer = document.querySelector(".recent-game");
+            if (recentGameContainer) { // Check if the container exists
+                recentGameContainer.innerHTML = `
+                    <h2>Your Recent Game</h2>
+                    <div class="recent-box">
+                        <p>Correct Packages: ${recentStats.recentCorrectPackages || 0}</p>
+                        <p>Rat Kills: ${recentStats.recentKills || 0}</p>
+                        <p>Total Time: ${recentStats.recentTotalTime || 0}s</p>
+                    </div>
+                `;
+            }
+        } else {
+            console.log("No recent game data found.");
+        }
+    } catch (error) {
+        console.error("Error fetching recent game data:", error);
+    }
 }
 
 // Fetch leaderboard data
