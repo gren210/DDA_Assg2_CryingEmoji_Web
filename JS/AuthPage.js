@@ -1,5 +1,5 @@
 import { auth } from '../config.js';
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js';
+import { createUserWithEmailAndPassword, signInWithEmailAndPassword, sendPasswordResetEmail, setPersistence, browserLocalPersistence, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js';
 
 // Handle sign-up, log-in, and password reset
 document.addEventListener('DOMContentLoaded', () => {
@@ -27,16 +27,29 @@ document.addEventListener('DOMContentLoaded', () => {
     // Log-in function
     const logIn = async (email, password) => {
         try {
+            await setPersistence(auth, browserLocalPersistence); // Ensure persistence
             const userCredential = await signInWithEmailAndPassword(auth, email, password);
-            const user = userCredential.user;
-            console.log('User signed in:', user);
-            alert('Login successful!');
-            window.location.href = '../HTML/MainSite.html'; // Redirect after successful login
-        } catch (error) {
-            console.error('Login error:', error.message);
-            alert(`Login failed. ${error.message}`);
-        }
-    };
+            console.log('Login successful:', userCredential.user);
+    
+            // Confirm authentication state
+            onAuthStateChanged(auth, (user) => {
+                if (user) {
+                    console.log('Authenticated user:', user);
+                    alert('Login successful!');
+                    window.location.href = '../HTML/MainSite.html';
+                } else {
+                    console.error('User is not authenticated.');
+                }
+            });
+        
+
+        // Redirect to MainSite and pass user data
+
+    } catch (error) {
+        console.error('Login error:', error.message);
+        alert(`Login failed. ${error.message}`);
+    }
+};
 
     // Reset password function
     const resetPassword = async (email) => {

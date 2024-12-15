@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-    <title>Tips and Tricks</title>
+    <title>Edit Profile</title>
     <link rel="stylesheet" href="../Styles/MainSite.css">
 </head>
+
 <body>
     <header class="header">
         <nav class="navbar">
@@ -21,43 +23,37 @@
         </nav>
     </header>
 
-    <main class="main-content">
-        <!-- Tips Section -->
-        <section class="tips-section">
-            <h2>Tips and Tricks</h2>
-            <div class="tips-container">
-                <div class="tips-box">
-                    <h3>Tip #1</h3>
-                    <p>Always double-check your inventory before starting your shift to ensure you have the correct tools.</p>
+    <div class="container-profile">
+        <div class="profile-edit">
+            <h1>Edit Profile</h1>
+            <form id="editProfileForm">
+                <!-- Change Username -->
+                <div class="form-group">
+                    <label for="username">Change Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Enter new username" required>
                 </div>
-                <div class="tips-box">
-                    <h3>Tip #2</h3>
-                    <p>Use the scanner correctly to avoid any mistakes during item picking or packaging.</p>
-                </div>
-                <div class="tips-box">
-                    <h3>Tip #3</h3>
-                    <p>Organize your workspace to improve efficiency and avoid injuries.</p>
-                </div>
-            </div>
-        </section>
 
-        <!-- Question Submission Form -->
-        <section class="question-section">
-            <h2>Have a Question?</h2>
-            <div class="question-form">
-                <label for="user-question">Submit your question below:</label>
-                <textarea id="user-question" placeholder="Type your question here..."></textarea>
-                <button id="submit-question">Submit Question</button>
-                <div class="success-message" id="success-message"></div>
-            </div>
-        </section>
-    </main>
+                <!-- Set User Description -->
+                <div class="form-group">
+                    <label for="description">Set User Description:</label>
+                    <textarea id="description" name="description" placeholder="Write about yourself..." rows="4"></textarea>
+                </div>
+
+                <!-- Save Button -->
+                <div class="form-group">
+                    <button type="submit" class="save-button">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-section about">
                 <h3>About Us</h3>
-                <p>Our goal is to prepare those looking to work in a warehouse environment through our VR training simulator.</p>
+                <p>
+                    Our Goal is to prepare those looking to work in a warehouse environment through this VR training simulator.
+                </p>
             </div>
             <div class="footer-section links">
                 <h3>Quick Links</h3>
@@ -70,8 +66,14 @@
             <div class="footer-section social">
                 <h3>Follow Us</h3>
                 <div class="social-icons">
-                    <a href="#" class="social-link"><i class="bx bxl-twitter"></i> Twitter</a>
-                    <a href="#" class="social-link"><i class="bx bxl-instagram"></i> Instagram</a>
+                    <a href="#" class="social-link">
+                        <i class="bx bxl-twitter"></i>
+                        <span>Twitter</span>
+                    </a>
+                    <a href="#" class="social-link">
+                        <i class="bx bxl-instagram"></i>
+                        <span>Instagram</span>
+                    </a>
                 </div>
             </div>
         </div>
@@ -80,7 +82,7 @@
         </div>
     </footer>
 
-    <script src="../JS/MainSite.js"></script>
+    <script type="module" src="../JS/MainSite.js"></script>
 </body>
-</html>
 
+</html>

@@ -396,7 +396,6 @@ body {
 
   /* Tips Section */
 .tips-section {
-  margin-top: 100px;
   padding: 20px;
   text-align: center;
 }
@@ -489,63 +488,313 @@ body {
 }
 
 /*Profile Page*/
+/* Profile Page Styles */
 .container-profile {
   width: 80%;
   margin: 50px auto;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.1); /* Transparent white for theme consistency */
+  backdrop-filter: blur(10px); /* Blur effect */
   border-radius: 10px;
+  color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+/* Profile Header Styling */
 .profile-header {
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 100%;
 }
 
 .profile-picture img {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    border: 2px solid #ffffff;
+}
+
+.profile-info {
+    margin-left: 15px;
+    color: #f1f1f1;
 }
 
 .profile-info h1 {
-  font-size: 28px;
-  font-weight: bold;
-  margin: 0;
-  color: white;
+    font-size: 24px;
+    margin: 0;
 }
 
 .profile-info p {
-  font-size: 18px;
-  color: #bbb;
+    font-size: 14px;
+    margin: 5px 0 0;
+    color: #b3b3b3;
 }
 
-.profile-stats table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background: rgba(255, 255, 255, 0.1);
+.edit-profile-button {
+    background-color: #4caf50; /* Clean green background */
+    color: white; /* White text for contrast */
+    border: none; /* Remove borders */
+    padding: 12px 24px; /* Even padding */
+    font-size: 16px; /* Clear and readable font size */
+    font-weight: bold; /* Bold text for emphasis */
+    border-radius: 8px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor to indicate it's clickable */
+    text-decoration: none; /* Remove text underline */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    transition: all 0.3s ease; /* Smooth hover animation */
+}
+
+.edit-profile-button:hover {
+    background-color: #45a049; /* Slightly darker green on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Enhanced shadow */
+}
+
+.edit-profile-button:active {
+    transform: translateY(0); /* Reset lift on click */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Reset shadow */
+}
+
+
+.player-description {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  margin-top: 15px;
   border-radius: 10px;
+  width: 100%;
 }
 
-.profile-stats th, .profile-stats td {
-  padding: 12px;
-  text-align: left;
+.player-description h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.player-description p {
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.profile-stats {
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #1a1a1a;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    width: 100%; /* Makes the table container span the full width */
+    box-sizing: border-box;
+}
+
+/* Style for the stats table */
+.profile-stats table {
+    width: 100%;
+    margin: 0 auto;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    font-size: 14px;
+    color: #f1f1f1;
+    text-align: left;
 }
 
 .profile-stats th {
-  background-color: #333;
-  color: #fff;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #ffffff;
+    padding: 10px 15px;
+    background-color: #333;
+    border-radius: 5px;
 }
 
 .profile-stats td {
-  background-color: rgba(255, 255, 255, 0.1);
-  color: white;
+    background-color: #2c2c2c;
+    padding: 10px 15px;
+    border-radius: 5px;
 }
+
+.profile-stats tr {
+    transition: background-color 0.3s ease;
+}
+
+.profile-stats tr:hover td {
+    background-color: #444;
+}
+
+
+.profile-stats tbody tr:nth-child(odd) {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.profile-stats tbody tr:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Profile Edit Container */
+.profile-edit {
+    background-color: #1a1a1a; 
+    padding: 30px; 
+    border-radius: 12px; 
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.4); 
+    max-width: 700px; 
+    margin: 40px auto; 
+    color: #f1f1f1; 
+}
+
+.profile-edit h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 28px; 
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 10px; 
+    color: #b3b3b3; 
+    font-weight: 500; 
+}
+
+.form-group input,
+.form-group textarea {
+    width: 600px; 
+    padding: 12px;
+    font-size: 16px; 
+    color: #333; 
+    border: 1px solid #ccc; 
+    border-radius: 8px; 
+    background: rgba(255, 255, 255, 0.2);   
+    transition: border-color 0.3s ease; 
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #4caf50;
+    outline: none; 
+}
+
+.save-button {
+    display: block;
+    width: 100%; 
+    background-color: #4caf50; 
+    color: #ffffff;
+    border: none;
+    padding: 14px; 
+    font-size: 18px; 
+    border-radius: 8px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth hover effect */
+}
+
+.save-button:hover {
+    background-color: #45a049; /* Darker green on hover */
+    transform: scale(1.05); /* Slight scale-up on hover for effect */
+}
+
+.save-button:active {
+    transform: scale(1); /* Reset scale when button is clicked */
+}
+/*Contact Us*/
+.container-contact {
+  max-width: 800px;
+  margin: 30px auto;
+  margin-top: 100px;;
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  color: #f1f1f1;
+}
+
+.contact-box {
+  padding: 20px;
+  background-color: #1a1a1a;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.contact-box h1 {
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.contact-detail h2 {
+  font-size: 18px;
+  color: #b3b3b3;
+  margin-bottom: 10px;
+}
+
+.contact-detail p {
+  font-size: 16px;
+  margin-bottom: 15px;
+  color: #f1f1f1;
+}
+
+.contact-detail a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.contact-detail a:hover {
+  text-decoration: underline;
+}
+/* General styles for the Privacy Policy page */
+.container-privacy {
+  background-color: #121212;
+  padding: 40px 20px;
+  color: #f1f1f1;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.privacy-policy-box {
+  background-color: #1a1a1a;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.privacy-policy-box h1 {
+  text-align: center;
+  color: #ffffff;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.privacy-policy-box h2 {
+  color: #4caf50;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.privacy-policy-box p {
+  font-size: 16px;
+  color: #dcdcdc;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.privacy-policy-box a {
+  color: #4caf50;
+  text-decoration: none;
+}
+
+.privacy-policy-box a:hover {
+  text-decoration: underline;
+}
+
+
+
   
   /* Responsive Styles */
   @media (max-width: 768px) {
