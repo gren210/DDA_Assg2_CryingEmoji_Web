@@ -18,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
 function populateLeaderboard(data, tableBodyId) {
     const tableBody = document.getElementById(tableBodyId);
 
-    // Check if the tableBody exists
     if (!tableBody) return;
 
     tableBody.innerHTML = ""; // Clear existing rows
@@ -49,15 +48,14 @@ function populateLeaderboard(data, tableBodyId) {
 }
 
 
+
 // Firebase
 import { auth} from "../config.js";
 import { getDatabase, ref, child, get, push, set, update} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-database.js";
-import {setPersistence, browserLocalPersistence, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js'
+import {setPersistence, browserLocalPersistence, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js'
 // Initialize Firebase database
 const db = getDatabase();
 const dbRef = ref(db);
-
-
 
 
 // Handle profile update
@@ -247,45 +245,119 @@ async function fetchRecentGame() {
     }
 }
 
-// Fetch leaderboard data
 function fetchLeaderboard() {
-    get(child(dbRef, "leaderboard")).then(snapshot => {
-        if (snapshot.exists()) {
-            const leaderboardData = snapshot.val();
-            const leaderboard1Data = [];
-            const leaderboard2Data = [];
+    get(child(dbRef, "leaderboard"))
+        .then(snapshot => {
+            if (snapshot.exists()) {
+                const leaderboardData = snapshot.val();
+                const leaderboard1Data = [];
+                const leaderboard2Data = [];
 
-            for (const userID in leaderboardData) {
-                const user = leaderboardData[userID];
-                leaderboard1Data.push({
-                    name: user.name,
-                    time: user.avgTimeCorrect + "s",
-                    score: user.score,
-                    packages: user.correctPackages,
-                    kills: user.kills,
+                for (const userID in leaderboardData) {
+                    const user = leaderboardData[userID];
+
+                    const formattedTime = user.avgTimeCorrect === 0 ? "N/A" : `${user.avgTimeCorrect}s`;
+
+                    leaderboard1Data.push({
+                        name: user.name,
+                        time: formattedTime,
+                        score: user.score,
+                        packages: user.correctPackages,
+                        kills: user.kills,
+                    });
+
+                    leaderboard2Data.push({
+                        name: user.name,
+                        time: formattedTime,
+                        score: user.score,
+                        packages: user.correctPackages,
+                        kills: user.kills,
+                    });
+                }
+
+                // Sort leaderboard data
+                leaderboard1Data.sort((a, b) => {
+                    if (a.time === "N/A" && b.time === "N/A") return 0;
+                    if (a.time === "N/A") return 1;
+                    if (b.time === "N/A") return -1;
+                    return parseFloat(a.time) - parseFloat(b.time);
                 });
 
-                leaderboard2Data.push({
-                    name: user.name,
-                    time: user.avgTimeCorrect + "s",
-                    score: user.score,
-                    packages: user.correctPackages,
-                    kills: user.kills,
+                leaderboard2Data.sort((a, b) => {
+                    if (a.time === "N/A" && b.time === "N/A") return 0;
+                    if (a.time === "N/A") return 1;
+                    if (b.time === "N/A") return -1;
+                    return parseFloat(a.time) - parseFloat(b.time);
                 });
+
+                // Populate tables
+                populateLeaderboard(leaderboard1Data, "leaderboard1-body");
+                populateLeaderboard(leaderboard2Data, "leaderboard2-body");
+            } else {
+                console.log("No leaderboard data available.");
             }
+        })
+        .catch(error => {
+            console.error("Error fetching leaderboard:", error);
+        });
+    get(child(dbRef, "leaderboard"))
+        .then(snapshot => {
+            if (snapshot.exists()) {
+                const leaderboardData = snapshot.val();
+                const leaderboard1Data = [];
+                const leaderboard2Data = [];
 
-            leaderboard1Data.sort((a, b) => parseFloat(a.time) - parseFloat(b.time));
-            leaderboard2Data.sort((a, b) => parseFloat(a.time) - parseFloat(b.time));
+                for (const userID in leaderboardData) {
+                    const user = leaderboardData[userID];
 
-            populateLeaderboard(leaderboard1Data, "leaderboard1-body");
-            populateLeaderboard(leaderboard2Data, "leaderboard2-body");
-        } else {
-            console.log("No leaderboard data available.");
-        }
-    }).catch(error => {
-        console.error("Error fetching leaderboard:", error);
-    });
+                    const formattedTime = user.avgTimeCorrect === 0 ? "N/A" : `${user.avgTimeCorrect}s`;
+
+                    leaderboard1Data.push({
+                        name: user.name,
+                        time: formattedTime,
+                        score: user.score,
+                        packages: user.correctPackages,
+                        kills: user.kills,
+                    });
+
+                    leaderboard2Data.push({
+                        name: user.name,
+                        time: formattedTime,
+                        score: user.score,
+                        packages: user.correctPackages,
+                        kills: user.kills,
+                    });
+                }
+
+                // Sort leaderboard data
+                leaderboard1Data.sort((a, b) => {
+                    if (a.time === "N/A" && b.time === "N/A") return 0;
+                    if (a.time === "N/A") return 1;
+                    if (b.time === "N/A") return -1;
+                    return parseFloat(a.time) - parseFloat(b.time);
+                });
+
+                leaderboard2Data.sort((a, b) => {
+                    if (a.time === "N/A" && b.time === "N/A") return 0;
+                    if (a.time === "N/A") return 1;
+                    if (b.time === "N/A") return -1;
+                    return parseFloat(a.time) - parseFloat(b.time);
+                });
+
+                // Populate tables
+                populateLeaderboard(leaderboard1Data, "leaderboard1-body");
+                populateLeaderboard(leaderboard2Data, "leaderboard2-body");
+            } else {
+                console.log("No leaderboard data available.");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching leaderboard:", error);
+        });
 }
+
+
+
 
 
 // Fetch user profile data
@@ -334,6 +406,72 @@ function fetchUserProfile(user) {
         });
 }
 
+// Handle sign-out functionality
+document.getElementById("signOutButton").addEventListener("click", function (event) {
+    event.preventDefault(); // Prevent the default link behavior
+
+    // Sign out the user
+    signOut(auth)
+        .then(() => {
+            // Redirect to the login page after successful sign-out
+            window.location.href = "AuthPageLogin.html";
+        })
+        .catch((error) => {
+            console.error("Error signing out:", error);
+            // Optionally display an error message
+        });
+});
+
+// Handle question submission
+const submitButton = document.getElementById("submit-question");
+if (submitButton) {
+    submitButton.addEventListener("click", () => {
+        const userQuestion = document.getElementById("user-question").value.trim();
+        const successMessage = document.getElementById("success-message");
+
+        if (userQuestion !== "") {
+            // Reference to the "questions" node in Firebase
+            const questionsRef = ref(db, "questions");
+
+            // Add the question to the "questions" node
+            const newQuestionRef = push(questionsRef);
+            set(newQuestionRef, {
+                content: userQuestion,
+                timestamp: new Date().toISOString() // Optional: Add a timestamp
+            }).then(() => {
+                // Display success message after successfully adding the question
+                successMessage.textContent = "Thank you! Your question has been submitted.";
+                successMessage.style.color = "#28a745"; // Green for success
+                successMessage.style.display = "block";
+
+                // Clear the textarea
+                document.getElementById("user-question").value = "";
+
+                setTimeout(() => {
+                    successMessage.style.display = "none";
+                }, 3000);
+            }).catch((error) => {
+                console.error("Error submitting question:", error);
+                successMessage.textContent = "An error occurred. Please try again.";
+                successMessage.style.color = "red"; // Red for error
+                successMessage.style.display = "block";
+
+                setTimeout(() => {
+                    successMessage.style.display = "none";
+                }, 3000);
+            });
+        } else {
+            // Display error message for empty input
+            successMessage.textContent = "Please enter a question before submitting.";
+            successMessage.style.color = "red"; // Red for error
+            successMessage.style.display = "block";
+
+            setTimeout(() => {
+                successMessage.style.display = "none";
+            }, 3000);
+        }
+    });
+}
 
 // Call monitorAuthState when the page loads
 monitorAuthState();

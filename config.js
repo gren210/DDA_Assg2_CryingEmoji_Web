@@ -21,4 +21,5 @@ const auth = getAuth(app);
 const database = getDatabase(app);
 
 // Export the modules for use in other files
-export { app, auth, database };
+export { app, auth, database};
+export default firebaseConfig;

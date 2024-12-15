@@ -12,7 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url("../Images/AuthBackground.png");
+    background: url("../Images/AuthBackground.jpg");
     background-size: cover;
     background-position: center;
 }
